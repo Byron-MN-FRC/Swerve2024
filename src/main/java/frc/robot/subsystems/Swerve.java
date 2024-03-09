@@ -29,6 +29,7 @@ public class Swerve extends SubsystemBase {
     public SwerveModule[] mSwerveMods;
     public Pigeon2 gyro;
     private AnalogOutput hourGlAnalog = new AnalogOutput(0);
+    public boolean invert;
     
 
 
@@ -53,6 +54,7 @@ public class Swerve extends SubsystemBase {
         this::setPose,
         this::getSpeeds,
         this::driveRobotRelative,
+        
        new HolonomicPathFollowerConfig(
          new PIDConstants(5.0, 0, 0), // Translation constants 
           new PIDConstants(5.0, 0, 0), // Rotation constants 
@@ -60,16 +62,19 @@ public class Swerve extends SubsystemBase {
           Units.inchesToMeters(27.5/2), //flModuleOffset.getNorm(), // Drive base radius (distance from center to furthest module) 
           new ReplanningConfig()
        ),
-        () -> {
-            var alliance = DriverStation.getAlliance();
-            if (alliance.isPresent()) {
-                return alliance.get() == DriverStation.Alliance.Red;
-            }
-            return false;
-        },
+        
+        this::isAllianceFlip,
         this
         );
     }
+    boolean isAllianceFlip() {
+        var alliance = DriverStation.getAlliance();
+        if (alliance.isPresent()) {
+            return alliance.get() == DriverStation.Alliance.Red;
+        }
+        return false;
+    }
+
     
     public void drive(Translation2d translation, double rotation, boolean fieldRelative, boolean isOpenLoop) {
         fieldRelative = true; // TODO : Override
