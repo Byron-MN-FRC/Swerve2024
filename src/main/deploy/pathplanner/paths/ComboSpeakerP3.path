@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.107030953854716,
-        "y": 1.2056309792083326
+        "x": 1.3777394973336319,
+        "y": 5.565450328895646
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.9369419360410929,
-        "y": 1.365714760679978
+        "x": 1.624635630223642,
+        "y": 5.174531451819796
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 0.7613266658586939,
-        "y": 4.382293517786304
+        "x": 2.3653240288936717,
+        "y": 4.31039498670476
       },
       "prevControl": {
-        "x": 0.9214104473303395,
-        "y": 4.12215737289488
+        "x": 1.6760723245757272,
+        "y": 4.763037897003112
       },
       "nextControl": null,
       "isLocked": false,
@@ -39,13 +39,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -61.557071375636674,
+    "rotation": -27.07208023799272,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "SideSpeaker",
+  "folder": "ComboSpeaker",
   "previewStartingState": {
-    "rotation": -28.00917670801382,
+    "rotation": 0,
     "velocity": 0
   },
   "useDefaultConstraints": true

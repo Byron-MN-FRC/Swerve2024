@@ -78,9 +78,8 @@ public class Acquisition extends SubsystemBase {
 
     @Override
     public void periodic() {
-        SmartDashboard.putBoolean("isNoteInAquisition", isNoteInAcquisition());
+        SmartDashboard.putBoolean("Note in Intake", isNoteInAcquisition());
         SmartDashboard.putBoolean("Intake Stored", isIntakeRetracted());
-        // SmartDashboard.putBoolean("Intake Out", isIntakeOut());
 
         // This method will be called once per scheduler run
         if (readyToTransfer()) {
@@ -104,7 +103,7 @@ public class Acquisition extends SubsystemBase {
     // here. Call these from Commands.
 
     public void deployIntake() {
-        if (RobotContainer.getInstance().ph.getPressure(0) >=  SmartDashboard.getNumber("PressureLim", 45)){
+        if (RobotContainer.getInstance().ph.getPressure(0) >= 45){
             intakeLeftSolenoid.set(Value.kForward);
             intakeRightSolenoid.set(Value.kForward);
         }

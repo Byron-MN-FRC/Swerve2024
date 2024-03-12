@@ -207,8 +207,7 @@ public class RobotContainer {
     final JoystickButton btnEndSpeaker = new JoystickButton(driver.getHID(), XboxController.Button.kRightBumper.value);
     btnEndSpeaker.onFalse(new ShootHighSpeakerEnd(m_spamp).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
 
-    final JoystickButton btnStartSpeaker = new JoystickButton(driver.getHID(),
-        XboxController.Button.kRightBumper.value);
+    final JoystickButton btnStartSpeaker = new JoystickButton(driver.getHID(), XboxController.Button.kRightBumper.value);
     btnStartSpeaker.onTrue(new ShootHighSpeakerStart(m_spamp).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
   
     /* Accessory Buttons */

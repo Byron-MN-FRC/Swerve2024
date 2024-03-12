@@ -11,6 +11,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.hal.FRCNetComm.tInstances;
 import edu.wpi.first.hal.FRCNetComm.tResourceType;
 import edu.wpi.first.hal.HAL;
@@ -62,7 +63,8 @@ public class Robot extends TimedRobot {
         // (alternatively) Record only DS control data
         DriverStation.startDataLog(DataLogManager.getLog(), false);
 
-        // CameraServer.startAutomaticCapture();
+        CameraServer.startAutomaticCapture();
+        // for climb camera
  
 
     }
@@ -88,8 +90,6 @@ public class Robot extends TimedRobot {
         // robot's periodic
         // block in order for anything in the Command-based framework to work.
         CommandScheduler.getInstance().run();
-        // SmartDashboard.putNumber("Pressure", ph.getPressure(0));
-        // SmartDashboard.putNumber("PressureLim", 65);
     }
 
     /**
