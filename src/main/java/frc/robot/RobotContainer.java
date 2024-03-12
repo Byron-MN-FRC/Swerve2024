@@ -33,7 +33,6 @@ import frc.robot.autos.exampleAuto;
 import frc.robot.commands.ActivateIntake;
 import frc.robot.commands.AutonomousCommand;
 import frc.robot.commands.ClearIntake;
-import frc.robot.commands.ResetState;
 import frc.robot.commands.RetractIntake;
 import frc.robot.commands.RunClimb;
 import frc.robot.commands.ShootHighSpeakerEnd;
@@ -81,7 +80,8 @@ public class RobotContainer {
   private final int rotationAxis = XboxController.Axis.kRightX.value;
 
   /* Driver Buttons */
-  private final JoystickButton zeroGyro = new JoystickButton(driver.getHID(), XboxController.Button.kX.value);
+  private final JoystickButton zeroGyro = new JoystickButton(driver.getHID(), XboxController.Button.kStart.value);
+  private final JoystickButton resetState = new JoystickButton(accessory.getHID(), XboxController.Button.kB.value);
 
   /* Subsystems */
   private final Swerve s_Swerve = new Swerve();
@@ -215,9 +215,9 @@ public class RobotContainer {
     final JoystickButton btnClearIntake = new JoystickButton(accessory.getHID(), XboxController.Button.kA.value);
       btnClearIntake.whileTrue(new ClearIntake(m_acquisition).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
 
-    final JoystickButton btnResetState = new JoystickButton(accessory.getHID(), XboxController.Button.kB.value);
-      btnResetState.onTrue(new ResetState(m_acquisition, m_spamp).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
-    accessory.leftTrigger(0.5)
+      resetState.onTrue(new InstantCommand(() -> m_spamp.resetState()));
+
+      accessory.leftTrigger(0.5)
         .whileTrue(new RunClimb(m_climb));
     }
   
