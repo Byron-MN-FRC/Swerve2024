@@ -73,7 +73,7 @@ public class Spamp extends SubsystemBase {
 
         topRight = new PWMSparkFlex(2);
 
-        topRight.setInverted(true);
+        topRight.setInverted(false);
 
         midLeft = new CANSparkMax(24, MotorType.kBrushless);
 
@@ -223,5 +223,13 @@ public class Spamp extends SubsystemBase {
         topRight.set(.3); // .25
         midLeft.set(.23); // .17
         bottomLeft.set(.2);
+    }
+
+    public void resetState(){
+        transferring = false;
+        retractShooter();
+        RobotContainer.getInstance().m_acquisition.retractIntake();
+        stopall();
+        RobotContainer.getInstance().m_acquisition.stopBoth();
     }
 }
