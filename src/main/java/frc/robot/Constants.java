@@ -178,6 +178,6 @@ public final class Constants {
     }
 
     public static final class AcquisitionConstants {
-        public static final double floorIntakeRPM = 1500;
+        public static final double floorIntakeRPM = 500;
     }
 }
