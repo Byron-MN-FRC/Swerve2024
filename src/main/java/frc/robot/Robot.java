@@ -19,7 +19,10 @@ import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DataLogManager;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
+import edu.wpi.first.wpilibj.PowerDistribution;
+import edu.wpi.first.wpilibj.PowerDistribution.ModuleType;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
@@ -38,7 +41,7 @@ public class Robot extends TimedRobot {
     
     // public PneumaticHub ph = new PneumaticHub(20);
     Compressor compressor = new Compressor(20, PneumaticsModuleType.REVPH);
-
+    private PowerDistribution pdp = new PowerDistribution(20, ModuleType.kRev);
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -90,6 +93,8 @@ public class Robot extends TimedRobot {
         // robot's periodic
         // block in order for anything in the Command-based framework to work.
         CommandScheduler.getInstance().run();
+
+        SmartDashboard.putNumber("Battery", pdp.getVoltage());
     }
 
     /**
