@@ -11,6 +11,18 @@
 
 package frc.robot;
 
+import org.littletonrobotics.junction.LogFileUtil;
+import org.littletonrobotics.junction.networktables.NT4Publisher;
+import org.littletonrobotics.junction.wpilog.WPILOGReader;
+import org.littletonrobotics.junction.wpilog.WPILOGWriter;
+import org.littletonrobotics.junction.LogFileUtil;
+import org.littletonrobotics.junction.LoggedRobot;
+import org.littletonrobotics.junction.Logger;
+import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
+import org.littletonrobotics.junction.networktables.NT4Publisher;
+import org.littletonrobotics.junction.wpilog.WPILOGReader;
+import org.littletonrobotics.junction.wpilog.WPILOGWriter;
+
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.hal.FRCNetComm.tInstances;
 import edu.wpi.first.hal.FRCNetComm.tResourceType;
@@ -19,6 +31,8 @@ import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DataLogManager;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
+import edu.wpi.first.wpilibj.PowerDistribution;
+import edu.wpi.first.wpilibj.PowerDistribution.ModuleType;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -30,7 +44,7 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
  * creating this project, you must also update the build.properties file in
  * the project.
  */
-public class Robot extends TimedRobot {
+public class Robot extends LoggedRobot {
     public static final CTREConfigs ctreConfigs = new CTREConfigs();
     private Command m_autonomousCommand;
 
@@ -60,9 +74,23 @@ public class Robot extends TimedRobot {
         // Record both DS control and joystick data
         DriverStation.startDataLog(DataLogManager.getLog());
 
-        // (alternatively) Record only DS control data
-        DriverStation.startDataLog(DataLogManager.getLog(), false);
+        //advatage kit
+        Logger.recordMetadata("ProjectName", "MyProject"); // Set a metadata value
 
+        if (isReal()) {
+            Logger.addDataReceiver(new WPILOGWriter()); // Log to a USB stick ("/U/logs")
+            Logger.addDataReceiver(new NT4Publisher()); // Publish data to NetworkTables
+        }
+        else {
+            setUseTiming(false); // Run as fast as possible
+            String logPath = LogFileUtil.findReplayLog(); // Pull the replay log from AdvantageScope (or prompt the user)
+            Logger.setReplaySource(new WPILOGReader(logPath)); // Read replay log
+            Logger.addDataReceiver(new WPILOGWriter(LogFileUtil.addPathSuffix(logPath, "_sim"))); // Save outputs to a new log
+        }
+
+            // Logger.disableDeterministicTimestamps() // See "Deterministic Timestamps" in the "Understanding Data Flow" page
+            Logger.start(); // Start logging! No more data receivers, replay sources, or metadata values may be added.
+        
         CameraServer.startAutomaticCapture();
         // for climb camera
  
