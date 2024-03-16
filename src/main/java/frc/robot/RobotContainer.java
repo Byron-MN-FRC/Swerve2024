@@ -33,6 +33,7 @@ import frc.robot.autos.exampleAuto;
 import frc.robot.commands.ActivateIntake;
 import frc.robot.commands.AutonomousCommand;
 import frc.robot.commands.ClearIntake;
+import frc.robot.commands.DriveToTag;
 import frc.robot.commands.RetractIntake;
 import frc.robot.commands.RunClimb;
 import frc.robot.commands.ShootHighSpeakerEnd;
@@ -85,6 +86,7 @@ public class RobotContainer {
   /* Driver Buttons */
   private final JoystickButton zeroGyro = new JoystickButton(driver.getHID(), XboxController.Button.kStart.value);
   private final JoystickButton resetState = new JoystickButton(accessory.getHID(), XboxController.Button.kB.value);
+  private final JoystickButton slowDown = new JoystickButton(driver.getHID(), XboxController.Button.kY.value);
 
   /* Subsystems */
   public final Swerve s_Swerve = new Swerve();
@@ -191,6 +193,17 @@ public class RobotContainer {
     /* Driver Buttons */
     zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
 
+    slowDown.whileTrue(new InstantCommand(() -> s_Swerve.slow()));  
+
+    final JoystickButton btnDriveToTag = new JoystickButton(driver.getHID(), XboxController.Button.kA.value);
+    btnDriveToTag.whileTrue(new DriveToTag(
+            s_Swerve, 
+            () -> -driver.getRawAxis(translationAxis),
+            () -> -driver.getRawAxis(strafeAxis),
+            () -> -driver.getRawAxis(rotationAxis),
+            () -> false
+    ).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
+
     /* Aquisition buttons */
     driver.rightTrigger(.5)
         .onFalse(new RetractIntake(m_acquisition).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
@@ -199,8 +212,11 @@ public class RobotContainer {
         .onTrue(new ActivateIntake(m_acquisition).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
 
     /* Spamp Buttons */
-    final JoystickButton btnSpampIntake = new JoystickButton(driver.getHID(), XboxController.Button.kY.value);
-    btnSpampIntake.whileTrue(new SpampIntake(m_spamp).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
+    // final JoystickButton btnSpampIntake = new JoystickButton(driver.getHID(), XboxController.Button.kY.value);
+    // btnSpampIntake.whileTrue(new SpampIntake(m_spamp).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
+
+    driver.leftTrigger(.5)
+        .whileTrue(new SpampIntake(m_spamp).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
 
     final JoystickButton btnEndAmp = new JoystickButton(driver.getHID(), XboxController.Button.kLeftBumper.value);
     btnEndAmp.onFalse(new ShootLowAmpEnd(m_spamp).withInterruptBehavior(InterruptionBehavior.kCancelSelf));

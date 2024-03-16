@@ -30,7 +30,7 @@ public class Swerve extends SubsystemBase {
     public Pigeon2 gyro;
     private AnalogOutput hourGlAnalog = new AnalogOutput(0);
     public boolean invert;
-    
+    private double isSlow;
 
 
     public Swerve() {
@@ -75,6 +75,12 @@ public class Swerve extends SubsystemBase {
         return false;
     }
 
+    public void slow(){
+        if(RobotContainer.getInstance().driver.y().getAsBoolean()){
+            isSlow = .5;
+        } else isSlow = 1;
+
+    }
     
     public void drive(Translation2d translation, double rotation, boolean fieldRelative, boolean isOpenLoop) {
         fieldRelative = true; // TODO : Override
@@ -88,9 +94,9 @@ public class Swerve extends SubsystemBase {
         SwerveModuleState[] swerveModuleStates =
             Constants.Swerve.swerveKinematics.toSwerveModuleStates(
                 fieldRelative ? ChassisSpeeds.fromFieldRelativeSpeeds(
-                                    translation.getX(), 
-                                    translation.getY(), 
-                                    rotation, 
+                                    translation.getX()*isSlow, 
+                                    translation.getY()*isSlow, 
+                                    rotation*isSlow, 
                                     getHeading()
                                 )
                                 : new ChassisSpeeds(
