@@ -26,11 +26,11 @@ public class TagApproaches {
         tagArray = new TagApproach[16];
 
         double poseOffsetx = (FieldLayout.getTagPose(2).get().getX() - FieldLayout.getTagPose(1).get().getX())/2 - 0.22;
-        double poseOffsety = (FieldLayout.getTagPose(2).get().getY() - FieldLayout.getTagPose(1).get().getY())/2 + 0.4;
+        double poseOffsety = (FieldLayout.getTagPose(2).get().getY() - FieldLayout.getTagPose(1).get().getY())/2 + 0.175;
         pose = calcNewPose(1,poseOffsetx, poseOffsety, 120);
-        tagArray[0] = new TagApproach(1, 0, 0.64, Alliance.Blue, gameTarget.Source,pose,0);
-        tagArray[1] = new TagApproach(2, 0, -0.64, Alliance.Blue, gameTarget.Source,pose,0);
-
+        tagArray[0] = new TagApproach(1, 0, 0.41, Alliance.Blue, gameTarget.Source,pose,0);
+        tagArray[1] = new TagApproach(2, 0, -0.41, Alliance.Blue, gameTarget.Source,pose,0);
+//.64
         pose = calcNewPose(3, -0.800, -0.5,45);
         tagArray[2] = new TagApproach(3, 0, 0, Alliance.Red, gameTarget.Speaker,pose, -1);
         //tagArray[2] = new TagApproach(3, 0, 0, Alliance.Red, gameTarget.Speaker,16.579342 - 0.750,4.983 - rw, 45);

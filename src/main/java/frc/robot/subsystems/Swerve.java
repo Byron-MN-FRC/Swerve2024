@@ -74,11 +74,11 @@ public class Swerve extends SubsystemBase {
     }
 
     public void slow() {
-        if (RobotContainer.getInstance().driver.y().getAsBoolean()) {
-            isSlow = .5;
-        } else
+        if (isSlow == 1) {
+            isSlow = .35;
+        } else {
             isSlow = 1;
-
+        }
     }
 
     public void drive(Translation2d translation, double rotation, boolean fieldRelative, boolean isOpenLoop) {
@@ -92,9 +92,9 @@ public class Swerve extends SubsystemBase {
         }
         SwerveModuleState[] swerveModuleStates = Constants.Swerve.swerveKinematics.toSwerveModuleStates(
                 fieldRelative ? ChassisSpeeds.fromFieldRelativeSpeeds(
-                        translation.getX(),
-                        translation.getY(),
-                        rotation,
+                        invert ? translation.getX() * -1 * isSlow : translation.getX() * isSlow,
+                        invert ? translation.getY() * -1 * isSlow : translation.getY() * isSlow,
+                        rotation * isSlow,
                         getHeading())
                         : new ChassisSpeeds(
                                 translation.getX(),
