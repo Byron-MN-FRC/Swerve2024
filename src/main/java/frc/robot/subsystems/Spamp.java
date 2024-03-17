@@ -177,10 +177,14 @@ public class Spamp extends SubsystemBase {
         }
     }
 
-    public void deployShooter() {
+    public void deployShooterAuton() {
         if(RobotContainer.getInstance().m_acquisition.isIntakeRetracted() && isNoteInSpamp()){
             shootSolenoid.set(Value.kForward);
         }
+    }
+
+    public void deployShooter() {
+        shootSolenoid.set(Value.kForward);
     }
 
     public void retractShooter() {
