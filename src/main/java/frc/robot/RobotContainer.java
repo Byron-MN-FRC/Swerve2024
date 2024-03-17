@@ -93,7 +93,7 @@ public class RobotContainer {
   public final Acquisition m_acquisition = new Acquisition();
   public final Climb m_climb = new Climb();
   public final Spamp m_spamp = new Spamp();
-  public final Vision m_final = new Vision();
+  public final Vision m_vision = new Vision();
   public PneumaticHub ph = new PneumaticHub(20);
 
   /* Path Planner */
