@@ -41,6 +41,7 @@ import frc.robot.commands.ShootLowAmpEnd;
 import frc.robot.commands.ShootLowAmpStart;
 import frc.robot.commands.SpampIntake;
 import frc.robot.commands.TeleopSwerve;
+import frc.robot.commands.UnwindClimb;
 import frc.robot.commands.autonAcquire;
 import frc.robot.commands.autonAmp;
 import frc.robot.commands.autonShoot;
@@ -222,6 +223,9 @@ public class RobotContainer {
 
       accessory.leftTrigger(0.5)
         .whileTrue(new RunClimb(m_climb));
+
+      accessory.rightTrigger(0.5)
+        .whileTrue(new UnwindClimb(m_climb));
     }
     
 
