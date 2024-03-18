@@ -38,10 +38,11 @@ public class Robot extends TimedRobot {
     private Command m_autonomousCommand;
 
     private RobotContainer m_robotContainer;
-    
+
     // public PneumaticHub ph = new PneumaticHub(20);
     Compressor compressor = new Compressor(20, PneumaticsModuleType.REVPH);
     private PowerDistribution pdp = new PowerDistribution(20, ModuleType.kRev);
+
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -55,8 +56,6 @@ public class Robot extends TimedRobot {
         HAL.report(tResourceType.kResourceType_Framework, tInstances.kFramework_RobotBuilder);
         enableLiveWindowInTest(true);
 
-        // ph.enableCompressorAnalog(100,120);
-
         // Starts recording to data log
         DataLogManager.start();
 
@@ -68,10 +67,8 @@ public class Robot extends TimedRobot {
 
         CameraServer.startAutomaticCapture();
         // for climb camera
- 
 
     }
-
 
     /**
      * This function is called every robot packet, no matter the mode. Use this for
