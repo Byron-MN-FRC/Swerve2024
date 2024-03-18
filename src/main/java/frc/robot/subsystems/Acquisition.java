@@ -114,7 +114,6 @@ public class Acquisition extends SubsystemBase {
         if (isNoteInAcquisition()) {
             stopBoth();
             RobotContainer.getInstance().driver.getHID().setRumble(RumbleType.kBothRumble, 1);
-            stopBoth();
         } else {
             bottomShaft.set(Constants.AcquisitionConstants.floorIntakeRPM / intakeGearRatio);
             topShaft.set(Constants.AcquisitionConstants.floorIntakeRPM / intakeGearRatio);
@@ -145,5 +144,9 @@ public class Acquisition extends SubsystemBase {
     public void runIntakeOut() {
             bottomShaft.set(-Constants.AcquisitionConstants.floorIntakeRPM / intakeGearRatio);
             topShaft.set(-Constants.AcquisitionConstants.floorIntakeRPM / intakeGearRatio);
+    }
+        public void runBoth() {
+            bottomShaft.set(Constants.AcquisitionConstants.floorIntakeRPM / intakeGearRatio);
+            topShaft.set(Constants.AcquisitionConstants.floorIntakeRPM / intakeGearRatio);
     }
 }

@@ -26,35 +26,34 @@ public class TagApproaches {
         tagArray = new TagApproach[16];
 
         double poseOffsetx = (FieldLayout.getTagPose(2).get().getX() - FieldLayout.getTagPose(1).get().getX())/2 - 0.22;
-        double poseOffsety = (FieldLayout.getTagPose(2).get().getY() - FieldLayout.getTagPose(1).get().getY())/2 + 0.4;
-        pose = calcNewPose(1,poseOffsetx, poseOffsety, 300);
-        tagArray[0] = new TagApproach(1, 0, 0.64, Alliance.Blue, gameTarget.Source,pose,-1);
-        tagArray[1] = new TagApproach(2, 0, -0.64, Alliance.Blue, gameTarget.Source,pose,1);
-
-        pose = calcNewPose(3, -0.800, -0.5,45);
-        tagArray[2] = new TagApproach(3, 0, 0, Alliance.Red, gameTarget.Speaker,pose, -1);
+        double poseOffsety = (FieldLayout.getTagPose(2).get().getY() - FieldLayout.getTagPose(1).get().getY())/2 + 0.175;
+        pose = calcNewPose(1,poseOffsetx, poseOffsety, 120);
+        tagArray[0] = new TagApproach(1, 0, 0.41, Alliance.Blue, gameTarget.Source,pose,0);
+        tagArray[1] = new TagApproach(2, 0, -0.41, Alliance.Blue, gameTarget.Source,pose,0);
+        pose = calcNewPose(3, -0.79, -0.51,240);
+        tagArray[2] = new TagApproach(3, 0, 0, Alliance.Red, gameTarget.Speaker,pose, 0);
         //tagArray[2] = new TagApproach(3, 0, 0, Alliance.Red, gameTarget.Speaker,16.579342 - 0.750,4.983 - rw, 45);
 
-        pose = calcNewPose(4, -0.914 - rw, 0,0);
+        pose = calcNewPose(4, -0.914 - rw, -0.15,180);
         tagArray[3] = new TagApproach(4, 0, 0, Alliance.Red, gameTarget.Speaker,pose,0);
         // tagArray[3] = new TagApproach(4, 0, 0, Alliance.Red, gameTarget.Speaker,16.579342 - 0.914 - rw, 5.548,0);
 
-        pose = calcNewPose(5, 0, -rw,90);
+        pose = calcNewPose(5, 0, -rw,-90);
         tagArray[4] = new TagApproach(5, 0, 0, Alliance.Red, gameTarget.Amp,pose,0);
 
-        pose = calcNewPose(6, 0.0, -rw,90);
+        pose = calcNewPose(6, 0.0, -rw,-90);
         tagArray[5] = new TagApproach(6, 0, 0, Alliance.Blue, gameTarget.Amp,pose,0);
 
-        pose = calcNewPose(7, 0.914 + rw, 0,180);
+        pose = calcNewPose(7, 0.914 + rw, 0,0);
         tagArray[6] = new TagApproach(7, 0.92, 0, Alliance.Blue, gameTarget.Speaker, pose,0);
 
-        pose = calcNewPose(8, 0.800, -0.50,138);
-        tagArray[7] = new TagApproach(8, 0.92, 0.56, Alliance.Blue, gameTarget.Speaker,pose,1);
+        pose = calcNewPose(8, 0.800, -0.50,-58);
+        tagArray[7] = new TagApproach(8, 0.92, 0.56, Alliance.Blue, gameTarget.Speaker,pose,0);
 
         poseOffsetx = (FieldLayout.getTagPose(10).get().getX() - FieldLayout.getTagPose(9).get().getX())/2 + 0.22;
-        poseOffsety = (FieldLayout.getTagPose(10).get().getY() - FieldLayout.getTagPose(9).get().getY())/2 + 0.40;
-        pose = calcNewPose(9, poseOffsetx, poseOffsety,240);
-        tagArray[8] = new TagApproach(9, 0, -0.64, Alliance.Red, gameTarget.Source, pose, -1);
+        poseOffsety = (FieldLayout.getTagPose(10).get().getY() - FieldLayout.getTagPose(9).get().getY())/2 + 0.175;
+        pose = calcNewPose(9, poseOffsetx, poseOffsety, 60);
+        tagArray[8] = new TagApproach(9, 0, -0.64, Alliance.Red, gameTarget.Source, pose, 0);
         tagArray[9] = new TagApproach(10, 0, 0.64, Alliance.Red, gameTarget.Source,pose, 1);
 
         pose = calcNewPose(11, 0.0, 0,45);
