@@ -74,14 +74,11 @@ public class Vision extends SubsystemBase {
 
     private void UpdateTargetData() {
         boolean aquired = AllianceTargetAquired();
-        SmartDashboard.putBoolean("driver/Target Found", aquired);
         if (aquired) {
             int targetID = (int) LimelightHelpers.getFiducialID(_limelightName);
-            SmartDashboard.putString("driver/TargetName", _tagApproches.GameTargetName(targetID));
             CalculateStearingValues(targetID);
             this.currentOptimalPose = _tagApproches.DesiredRobotPos(targetID);
         } else {
-            SmartDashboard.putString("driver/TargetName", "No Target");
         }
     }
 
@@ -106,7 +103,6 @@ public class Vision extends SubsystemBase {
         /// well.
         turnPower = _turnToTargetPID.calculate(LimelightHelpers.getTX(_limelightName), 0);
         rotPower = _rotateToTargetPID.calculate(Units.radiansToDegrees(LimelightHelpers.getBotPose3d_TargetSpace(_limelightName).getRotation().getY()),0);
-        SmartDashboard.putNumber("Target Rotation", Units.radiansToDegrees(LimelightHelpers.getBotPose3d_TargetSpace(_limelightName).getRotation().getY()));
         if (_turnToTargetPID.atSetpoint())
             turnPower = 0;
         
@@ -144,11 +140,9 @@ public class Vision extends SubsystemBase {
             // offset from cameral to middle of robot
             robotPose = robotPose.transformBy(new Transform2d(new Translation2d(Units.inchesToMeters(10.5),0),new Rotation2d()));
        
-            SmartDashboard.putString("robotPose", robotPose.toString());
  
             getVisionCalculatedRobotPose = robotPose;    
 
-            SmartDashboard.putNumber("driver/Distance", poseDifference);
 
             if (poseDifference < 1.5) {
                 if (swervePoseEstimator != null) {

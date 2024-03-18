@@ -92,7 +92,6 @@ public class Swerve extends SubsystemBase {
         }
         if (isAllianceFlip() == true) invert = true;
         else invert = false;
-        SmartDashboard.putBoolean("invert", invert);
         SwerveModuleState[] swerveModuleStates = Constants.Swerve.swerveKinematics.toSwerveModuleStates(
                 fieldRelative ? ChassisSpeeds.fromFieldRelativeSpeeds(
                         // translation.getX() * isSlow,

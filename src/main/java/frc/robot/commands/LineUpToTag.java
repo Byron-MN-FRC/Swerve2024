@@ -71,7 +71,6 @@ public class LineUpToTag extends Command {
                 m_swerve.setPose(newPose);
                 lastTarget = fidID;
                 goalPose = TagApproaches.getInstance().DesiredRobotPos(lastTarget);
-                SmartDashboard.putString("goal pose", goalPose.toString());
             }
         }
 
@@ -104,7 +103,6 @@ public class LineUpToTag extends Command {
 
             var omegaSpeed = omegaController.calculate(m_swerve.getPose().getRotation().getRadians());
             if (omegaController.atGoal()) { omegaSpeed = 0; }
-            SmartDashboard.putString("current pose", m_swerve.getPose().toString());
             m_swerve.driveRobotRelative(
                 //   new ChassisSpeeds(xSpeed, 0, 0));
                 ChassisSpeeds.fromFieldRelativeSpeeds(xSpeed, ySpeed, omegaSpeed, m_swerve.getPose().getRotation()));
