@@ -14,7 +14,6 @@ import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.LimelightHelpers;
 import frc.robot.RobotContainer;
@@ -78,7 +77,6 @@ public class Vision extends SubsystemBase {
             int targetID = (int) LimelightHelpers.getFiducialID(_limelightName);
             CalculateStearingValues(targetID);
             this.currentOptimalPose = _tagApproches.DesiredRobotPos(targetID);
-        } else {
         }
     }
 
