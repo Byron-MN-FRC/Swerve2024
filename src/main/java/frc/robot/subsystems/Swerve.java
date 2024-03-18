@@ -29,8 +29,8 @@ public class Swerve extends SubsystemBase {
     public SwerveModule[] mSwerveMods;
     public Pigeon2 gyro;
     private AnalogOutput hourGlAnalog = new AnalogOutput(0);
-    public boolean invert;
-    private double isSlow;
+    public boolean invert = false;
+    private double isSlow = 1;
 
     public Swerve() {
         gyro = new Pigeon2(Constants.Swerve.pigeonID);
@@ -90,8 +90,13 @@ public class Swerve extends SubsystemBase {
         } else {
             startMonitoring();
         }
+        if (isAllianceFlip() == true) invert = true;
+        else invert = false;
+        SmartDashboard.putBoolean("invert", invert);
         SwerveModuleState[] swerveModuleStates = Constants.Swerve.swerveKinematics.toSwerveModuleStates(
                 fieldRelative ? ChassisSpeeds.fromFieldRelativeSpeeds(
+                        // translation.getX() * isSlow,
+                        // translation.getY() * isSlow,
                         invert ? translation.getX() * -1 * isSlow : translation.getX() * isSlow,
                         invert ? translation.getY() * -1 * isSlow : translation.getY() * isSlow,
                         rotation * isSlow,

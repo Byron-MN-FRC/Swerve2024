@@ -46,7 +46,7 @@ public class LineUpToTag extends Command {
         m_swerve = subsystem;
         xController.setTolerance(0.05);
         yController.setTolerance(0.05);
-        omegaController.setTolerance(Units.degreesToRadians(3));
+        omegaController.setTolerance(Units.degreesToRadians(2));
         omegaController.enableContinuousInput(-Math.PI, Math.PI);
         addRequirements(m_swerve);
     }
