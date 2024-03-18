@@ -35,10 +35,6 @@ public class TagApproach {
     public gameTarget GameTarget(){
         return _targetType;
     }
-
-    public String GameTargetName() {
-        return String.format("%s - %s Alliance",_targetType.name(), _alliance.name());
-    }
     
     public Pose2d DesiredPos(){
         return _desiredPose;

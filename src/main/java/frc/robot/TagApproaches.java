@@ -32,6 +32,7 @@ public class TagApproaches {
         pose = calcNewPose(1, poseOffsetx, poseOffsety, 120);
         tagArray[0] = new TagApproach(1, Alliance.Blue, gameTarget.Source, pose);
         tagArray[1] = new TagApproach(2, Alliance.Blue, gameTarget.Source, pose);
+        
         pose = calcNewPose(3, -0.79, -0.51, 240);
         tagArray[2] = new TagApproach(3, Alliance.Red, gameTarget.Speaker, pose);
 
@@ -93,10 +94,6 @@ public class TagApproaches {
 
     public gameTarget GameTarget(int tagID) {
         return tagArray[tagID - 1].GameTarget();
-    }
-
-    public String GameTargetName(int tagID) {
-        return tagArray[tagID - 1].GameTargetName();
     }
 
     public Pose2d DesiredRobotPos(int tagID) {
