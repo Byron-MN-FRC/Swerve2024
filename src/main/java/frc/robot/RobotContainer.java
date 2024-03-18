@@ -33,7 +33,6 @@ import frc.robot.autos.exampleAuto;
 import frc.robot.commands.ActivateIntake;
 import frc.robot.commands.AutonomousCommand;
 import frc.robot.commands.ClearIntake;
-import frc.robot.commands.DriveToTag;
 import frc.robot.commands.LineUpToTag;
 import frc.robot.commands.RetractIntake;
 import frc.robot.commands.RunClimb;
@@ -230,7 +229,9 @@ public class RobotContainer {
 
       accessory.leftTrigger(0.5).whileTrue(new RunClimb(m_climb));
 
-      accessory.start().whileTrue(new UnwindClimb(m_climb));
+      // accessory.start().whileTrue(new UnwindClimb(m_climb));
+      final JoystickButton btnUnwindClimb = new JoystickButton(accessory.getHID(), XboxController.Button.kStart.value);
+        btnUnwindClimb.whileTrue(new UnwindClimb(m_climb).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
     }
 
 
