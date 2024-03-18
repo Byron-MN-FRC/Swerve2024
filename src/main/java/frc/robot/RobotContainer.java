@@ -221,11 +221,9 @@ public class RobotContainer {
 
       resetState.onTrue(new InstantCommand(() -> m_spamp.resetState()));
 
-      accessory.leftTrigger(0.5)
-        .whileTrue(new RunClimb(m_climb));
+      accessory.leftTrigger(0.5).whileTrue(new RunClimb(m_climb));
 
-      accessory.rightTrigger(0.5)
-        .whileTrue(new UnwindClimb(m_climb));
+      accessory.start().whileTrue(new UnwindClimb(m_climb));
     }
     
 
