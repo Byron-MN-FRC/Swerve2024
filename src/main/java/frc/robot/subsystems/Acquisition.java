@@ -37,7 +37,6 @@ public class Acquisition extends SubsystemBase {
     private DoubleSolenoid intakeLeftSolenoid;
     private DigitalInput noteDetectorAcquisition;
     private DigitalInput intakeInSwitch;
-    private DigitalInput intakeOutSwitch;
     private PWMSparkMax bottomShaft;
     private PWMSparkMax topShaft;
 
@@ -57,9 +56,6 @@ public class Acquisition extends SubsystemBase {
 
         intakeInSwitch = new DigitalInput(0);
         addChild("intakeInSwitch", intakeInSwitch);
-
-        intakeOutSwitch = new DigitalInput(9);
-        addChild("IntakeOutSwitch", intakeOutSwitch);
 
         bottomShaft = new PWMSparkMax(0);
         addChild("bottomShaft", bottomShaft);
@@ -103,7 +99,6 @@ public class Acquisition extends SubsystemBase {
         if (RobotContainer.getInstance().ph.getPressure(0) >= 45){
             intakeLeftSolenoid.set(Value.kForward);
         }
-      
     }
 
     public void retractIntake() {
@@ -135,10 +130,6 @@ public class Acquisition extends SubsystemBase {
 
     boolean isIntakeRetracted() {
         return !intakeInSwitch.get();
-    }
-
-    boolean isIntakeOut() {
-        return !intakeOutSwitch.get();
     }
 
     public void runIntakeOut() {
