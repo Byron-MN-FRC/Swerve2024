@@ -58,7 +58,7 @@ public class LineUpToTag extends Command {
         // Verify that see a valid target for aliance and set current robot pose based on it.
           if (RobotContainer.getInstance().m_vision.AllianceTargetAquired()) {
             int fidID = (int) LimelightHelpers.getFiducialID(_limelightName);
-            if ((fidID >= 0) && (fidID <= 15)) {
+            if ((fidID >= 0) && (fidID <= 16)) {
                 var robotPose2d =  LimelightHelpers.getBotPose2d_wpiBlue(_limelightName); 
                 Pose2d newPose  = new Pose2d(
                     robotPose2d.getX(),

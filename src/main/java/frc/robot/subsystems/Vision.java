@@ -170,7 +170,7 @@ public class Vision extends SubsystemBase {
         boolean targetAquired = LimelightHelpers.getTV(_limelightName);
         if (targetAquired) {
             int targetID = (int) LimelightHelpers.getFiducialID(_limelightName);
-            if ((targetID >= 0) && (targetID <= 15))
+            if ((targetID >= 0) && (targetID <= 16))
                 return (MyAlliance() == _tagApproches.TagAlliance(targetID));
             else
                 return false;

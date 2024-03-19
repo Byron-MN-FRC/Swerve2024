@@ -28,7 +28,7 @@ public class TagApproaches {
         double poseOffsetx = (FieldLayout.getTagPose(2).get().getX() - FieldLayout.getTagPose(1).get().getX()) / 2
                 - 0.22;
         double poseOffsety = (FieldLayout.getTagPose(2).get().getY() - FieldLayout.getTagPose(1).get().getY()) / 2
-                + 0.175;
+                + 0.185;
         pose = calcNewPose(1, poseOffsetx, poseOffsety, 120);
         tagArray[0] = new TagApproach(1, Alliance.Blue, gameTarget.Source, pose);
         tagArray[1] = new TagApproach(2, Alliance.Blue, gameTarget.Source, pose);
@@ -57,22 +57,22 @@ public class TagApproaches {
         tagArray[8] = new TagApproach(9, Alliance.Red, gameTarget.Source, pose);
         tagArray[9] = new TagApproach(10, Alliance.Red, gameTarget.Source, pose);
 
-        pose = calcNewPose(11, 0.0, 0, 45);
+        pose = calcNewPose(11, 0.16, -0.16, 120);
         tagArray[10] = new TagApproach(11, Alliance.Red, gameTarget.Stage, pose);
 
-        pose = calcNewPose(12, 0.0, 0, 45);
+        pose = calcNewPose(12, 0.15, 0.15, 240);
         tagArray[11] = new TagApproach(12, Alliance.Red, gameTarget.Stage, pose);
 
-        pose = calcNewPose(13, 0.0, 0, 45);
+        pose = calcNewPose(13, -0.3, 0, 0);
         tagArray[12] = new TagApproach(13, Alliance.Red, gameTarget.Stage, pose);
 
-        pose = calcNewPose(14, 0.0, 0, 45);
+        pose = calcNewPose(14, 0.4, 0, 180);
         tagArray[13] = new TagApproach(14, Alliance.Blue, gameTarget.Stage, pose);
 
-        pose = calcNewPose(15, 0.0, 0, 45);
+        pose = calcNewPose(15, -0.15, 0.15, -60);
         tagArray[14] = new TagApproach(15, Alliance.Blue, gameTarget.Stage, pose);
 
-        pose = calcNewPose(16, 0.0, 0, 45);
+        pose = calcNewPose(16, -0.15, -0.15, 60);
         tagArray[15] = new TagApproach(16, Alliance.Blue, gameTarget.Stage, pose);
     }
 
