@@ -26,9 +26,9 @@ public class TagApproaches {
         tagArray = new TagApproach[16];
 
         double poseOffsetx = (FieldLayout.getTagPose(2).get().getX() - FieldLayout.getTagPose(1).get().getX()) / 2
-                - 0.22;
+                - 0.235;
         double poseOffsety = (FieldLayout.getTagPose(2).get().getY() - FieldLayout.getTagPose(1).get().getY()) / 2
-                + 0.185;
+                + 0.2;
         pose = calcNewPose(1, poseOffsetx, poseOffsety, 120);
         tagArray[0] = new TagApproach(1, Alliance.Blue, gameTarget.Source, pose);
         tagArray[1] = new TagApproach(2, Alliance.Blue, gameTarget.Source, pose);
