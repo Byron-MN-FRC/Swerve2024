@@ -15,13 +15,15 @@ public class autonShoot extends Command {
     
     @Override
     public void initialize() {
-        m_spamp.deployShooterAuton();
     }
 
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        m_spamp.speakerAutonShoot();
+        if (!m_spamp.transferring){
+            m_spamp.deployShooter();
+            m_spamp.speakerAutonShoot();
+        }
     }
 
     // Called once the command ends or is interrupted.

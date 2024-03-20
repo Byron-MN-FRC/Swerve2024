@@ -55,7 +55,7 @@ public class Spamp extends SubsystemBase {
     public double bottomRightSpeed;
     public double bottomLeftSpeed;
 
-    private boolean transferring;
+    public boolean transferring;
 
     /**
     *
@@ -166,11 +166,6 @@ public class Spamp extends SubsystemBase {
         }
     }
 
-    public void deployShooterAuton() {
-        if(RobotContainer.getInstance().m_acquisition.isIntakeRetracted() && isNoteInSpamp()){
-            shootSolenoid.set(Value.kForward);
-        }
-    }
 
     public void deployShooter() {
         shootSolenoid.set(Value.kForward);

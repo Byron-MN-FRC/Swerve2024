@@ -80,22 +80,9 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "path",
           "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "ComboSpeakerP5"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "autonAcquireCommand"
-                }
-              }
-            ]
+            "pathName": "ComboSpeakerP5"
           }
         }
       ]
