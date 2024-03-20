@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.7213057204907822,
-      "y": 6.683497876441213
+      "x": 1.408601513944883,
+      "y": 5.503726295673142
     },
-    "rotation": 60.99187650063335
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
@@ -24,7 +24,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "AmpP1"
+                  "pathName": "ComboSpeakerP1"
                 }
               },
               {
@@ -39,13 +39,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "AmpP2"
+            "pathName": "ComboSpeakerP2"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "autonAmpCommand"
+            "name": "autonShootCommand"
           }
         },
         {
@@ -55,7 +55,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "AmpP3"
+                  "pathName": "ComboSpeakerP3"
                 }
               },
               {
@@ -70,13 +70,19 @@
         {
           "type": "path",
           "data": {
-            "pathName": "AmpP4"
+            "pathName": "ComboSpeakerP4"
           }
         },
         {
           "type": "named",
           "data": {
             "name": "autonShootCommand"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "ComboSpeakerP5"
           }
         }
       ]

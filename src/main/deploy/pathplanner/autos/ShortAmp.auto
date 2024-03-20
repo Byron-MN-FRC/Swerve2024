@@ -55,22 +55,9 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "path",
           "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "ShortAmpP4"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "autonAcquireCommand"
-                }
-              }
-            ]
+            "pathName": "ShortAmpP4"
           }
         }
       ]

@@ -11,6 +11,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.hal.FRCNetComm.tInstances;
 import edu.wpi.first.hal.FRCNetComm.tResourceType;
 import edu.wpi.first.hal.HAL;
@@ -18,7 +19,10 @@ import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DataLogManager;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
+import edu.wpi.first.wpilibj.PowerDistribution;
+import edu.wpi.first.wpilibj.PowerDistribution.ModuleType;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
@@ -34,9 +38,10 @@ public class Robot extends TimedRobot {
     private Command m_autonomousCommand;
 
     private RobotContainer m_robotContainer;
-    
+
     // public PneumaticHub ph = new PneumaticHub(20);
     Compressor compressor = new Compressor(20, PneumaticsModuleType.REVPH);
+    private PowerDistribution pdp = new PowerDistribution(20, ModuleType.kRev);
 
     /**
      * This function is run when the robot is first started up and should be
@@ -51,8 +56,6 @@ public class Robot extends TimedRobot {
         HAL.report(tResourceType.kResourceType_Framework, tInstances.kFramework_RobotBuilder);
         enableLiveWindowInTest(true);
 
-        // ph.enableCompressorAnalog(100,120);
-
         // Starts recording to data log
         DataLogManager.start();
 
@@ -62,11 +65,10 @@ public class Robot extends TimedRobot {
         // (alternatively) Record only DS control data
         DriverStation.startDataLog(DataLogManager.getLog(), false);
 
-        // CameraServer.startAutomaticCapture();
- 
+        CameraServer.startAutomaticCapture();
+        // for climb camera
 
     }
-
 
     /**
      * This function is called every robot packet, no matter the mode. Use this for
@@ -88,8 +90,8 @@ public class Robot extends TimedRobot {
         // robot's periodic
         // block in order for anything in the Command-based framework to work.
         CommandScheduler.getInstance().run();
-        // SmartDashboard.putNumber("Pressure", ph.getPressure(0));
-        // SmartDashboard.putNumber("PressureLim", 65);
+
+        SmartDashboard.putNumber("Battery", pdp.getVoltage());
     }
 
     /**

@@ -21,6 +21,7 @@ public class autonAmp extends Command {
   @Override
   public void initialize() {
     m_time.start();
+    m_spamp.deployShooter();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -33,11 +34,12 @@ public class autonAmp extends Command {
   @Override
   public void end(boolean interrupted) {
     m_spamp.stopall();
+    m_spamp.retractShooter();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return m_spamp.isDoneShooting() && m_time.hasElapsed(1.2); 
+    return m_spamp.isDoneShooting() && m_time.hasElapsed(1.8); 
   }
 }

@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.6769306145247365,
-        "y": 2.4122103220509756
+        "x": 1.3983141750744656,
+        "y": 5.534588312284395
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.034971415914396,
-        "y": 2.392757013002177
+        "x": 2.398314175074465,
+        "y": 5.534588312284395
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.4226917553361174,
-        "y": 2.4511169401485713
+        "x": 2.47317044397122,
+        "y": 5.544193078907484
       },
       "prevControl": {
-        "x": 2.0743776084708565,
-        "y": 2.441390285624172
+        "x": 1.4731704439712199,
+        "y": 5.544193078907484
       },
       "nextControl": null,
       "isLocked": false,
@@ -32,8 +32,8 @@
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 3.0,
-    "maxAcceleration": 3.0,
+    "maxVelocity": 2.5,
+    "maxAcceleration": 1.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0
   },
@@ -43,10 +43,10 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "FarTest",
+  "folder": "ComboSpeaker",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

@@ -50,6 +50,7 @@ public class ShootLowAmpStart extends Command {
     public void initialize() {
         // m_spamp.ampSpinToRPM();
         m_spamp.runTopAmp();
+        m_spamp.deployShooter();
     }
 
     // Called every time the scheduler runs while the command is scheduled.
