@@ -29,7 +29,7 @@ public class LineUpToTag extends Command {
   private static final TrapezoidProfile.Constraints Y_CONSTRAINTS = new TrapezoidProfile.Constraints(3, 2);
   private static final TrapezoidProfile.Constraints OMEGA_CONSTRAINTS =   new TrapezoidProfile.Constraints(8, 8);
 
-  private String _limelightName = "limelight-cybears"; // use from vision TODO
+  private String _limelightName = "limelight-bears"; // use from vision TODO
    public AprilTagFieldLayout FieldLayout = AprilTagFields.k2024Crescendo.loadAprilTagLayoutField();
 
   private final Swerve m_swerve;

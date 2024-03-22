@@ -1,6 +1,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.RobotContainer;
 import frc.robot.subsystems.Spamp;
 
 public class autonShoot extends Command {
@@ -15,15 +16,18 @@ public class autonShoot extends Command {
     
     @Override
     public void initialize() {
+        if (RobotContainer.getInstance().m_acquisition.isIntakeRetracted() && m_spamp.isNoteInSpamp()) {
+            m_spamp.deployShooter();
+        }
     }
 
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        if (!m_spamp.transferring){
-            m_spamp.deployShooter();
+        // if (!m_spamp.transferring){
+            // m_spamp.deployShooter();
             m_spamp.speakerAutonShoot();
-        }
+        // }
     }
 
     // Called once the command ends or is interrupted.
