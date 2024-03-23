@@ -13,35 +13,35 @@ import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.util.Units;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.LimelightHelpers;
 import frc.robot.RobotContainer;
 import frc.robot.TagApproaches;
 import frc.robot.subsystems.Swerve;
 
-
 /**
  *
  */
 public class LineUpToTag extends Command {
 
-  private static final TrapezoidProfile.Constraints X_CONSTRAINTS = new TrapezoidProfile.Constraints(3, 2);
-  private static final TrapezoidProfile.Constraints Y_CONSTRAINTS = new TrapezoidProfile.Constraints(3, 2);
-  private static final TrapezoidProfile.Constraints OMEGA_CONSTRAINTS =   new TrapezoidProfile.Constraints(8, 8);
+    private static final TrapezoidProfile.Constraints X_CONSTRAINTS = new TrapezoidProfile.Constraints(3, 2);
+    private static final TrapezoidProfile.Constraints Y_CONSTRAINTS = new TrapezoidProfile.Constraints(3, 2);
+    private static final TrapezoidProfile.Constraints OMEGA_CONSTRAINTS = new TrapezoidProfile.Constraints(8, 8);
 
-  private String _limelightName = "limelight-bears"; // use from vision TODO
-   public AprilTagFieldLayout FieldLayout = AprilTagFields.k2024Crescendo.loadAprilTagLayoutField();
+    private String _limelightName = "limelight-bears"; // use from vision TODO
+    public AprilTagFieldLayout FieldLayout = AprilTagFields.k2024Crescendo.loadAprilTagLayoutField();
 
-  private final Swerve m_swerve;
-  private Pose2d goalPose;
+    private final Swerve m_swerve;
+    private Pose2d goalPose;
 
-  private final ProfiledPIDController xController = new ProfiledPIDController(2, 0, 0, X_CONSTRAINTS);
-  private final ProfiledPIDController yController = new ProfiledPIDController(2.5, 0, 0, Y_CONSTRAINTS);
-  private final ProfiledPIDController omegaController = new ProfiledPIDController(3, 0, .1, OMEGA_CONSTRAINTS);
- 
-  private int lastTarget;
+    private final ProfiledPIDController xController = new ProfiledPIDController(2, 0, 0, X_CONSTRAINTS);
+    private final ProfiledPIDController yController = new ProfiledPIDController(2.5, 0, 0, Y_CONSTRAINTS);
+    private final ProfiledPIDController omegaController = new ProfiledPIDController(3, 0, .1, OMEGA_CONSTRAINTS);
 
-    public LineUpToTag(Swerve subsystem, Supplier<Pose2d> poseProvider ) {
+    private int lastTarget;
+
+    public LineUpToTag(Swerve subsystem, Supplier<Pose2d> poseProvider) {
         m_swerve = subsystem;
         xController.setTolerance(0.05);
         yController.setTolerance(0.05);
@@ -70,45 +70,53 @@ public class LineUpToTag extends Command {
                 m_swerve.setPose(newPose);
                 lastTarget = fidID;
                 goalPose = TagApproaches.getInstance().DesiredRobotPos(lastTarget);
+
+                SmartDashboard.putString("current pose", newPose.toString());
+                SmartDashboard.putString("goal pose", goalPose.toString());
             }
         }
 
         omegaController.reset(m_swerve.getPose().getRotation().getRadians());
         xController.reset(m_swerve.getPose().getX());
         yController.reset(m_swerve.getPose().getY());
+
     }
-
-
 
     // Called every time the scheduler runs while the command is scheduled.
     @Override
-    public void execute(){
-  
-        if (lastTarget == 0 ) {
+    public void execute() {
+
+        if (lastTarget == 0) {
             m_swerve.stop();
-        }  else {          
+        } else {
 
             // Drive
             xController.setGoal(goalPose.getX());
             yController.setGoal(goalPose.getY());
             omegaController.setGoal(goalPose.getRotation().getRadians());
-                
+
             // Drive to the target
             var xSpeed = xController.calculate(m_swerve.getPose().getX());
-            if (xController.atGoal()) { xSpeed = 0; }
+            if (xController.atGoal()) {
+                xSpeed = 0;
+            }
 
             var ySpeed = yController.calculate(m_swerve.getPose().getY());
-            if (yController.atGoal()) { ySpeed = 0; }
+            if (yController.atGoal()) {
+                ySpeed = 0;
+            }
 
             var omegaSpeed = omegaController.calculate(m_swerve.getPose().getRotation().getRadians());
-            if (omegaController.atGoal()) { omegaSpeed = 0; }
+            if (omegaController.atGoal()) {
+                omegaSpeed = 0;
+            }
             m_swerve.driveRobotRelative(
-                //   new ChassisSpeeds(xSpeed, 0, 0));
-                ChassisSpeeds.fromFieldRelativeSpeeds(xSpeed, ySpeed, omegaSpeed, m_swerve.getPose().getRotation()));
-           } 
+                    // new ChassisSpeeds(xSpeed, 0, 0));
+                    ChassisSpeeds.fromFieldRelativeSpeeds(xSpeed, ySpeed, omegaSpeed,
+                            m_swerve.getPose().getRotation()));
+        }
 
     }
- 
 
     // Called once the command ends or is interrupted.
     @Override

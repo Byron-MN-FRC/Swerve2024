@@ -16,18 +16,19 @@ public class autonShoot extends Command {
     
     @Override
     public void initialize() {
-        if (RobotContainer.getInstance().m_acquisition.isIntakeRetracted() && m_spamp.isNoteInSpamp()) {
-            m_spamp.deployShooter();
-        }
+      //  if (RobotContainer.getInstance().m_acquisition.isIntakeRetracted() && m_spamp.isNoteInSpamp()) {
+      //      m_spamp.deployShooter();
+      ///  }
     }
 
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
         // if (!m_spamp.transferring){
-            // m_spamp.deployShooter();
+        if (m_spamp.isNoteInSpamp() || m_spamp.isNoteLeavingSpamp()) {
+            m_spamp.deployShooter();
             m_spamp.speakerAutonShoot();
-        // }
+        }
     }
 
     // Called once the command ends or is interrupted.
@@ -40,7 +41,7 @@ public class autonShoot extends Command {
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        return !m_spamp.isNoteLeavingSpamp() && !m_spamp.isNoteInSpamp();
+        return !m_spamp.isNoteLeavingSpamp() && !m_spamp.isNoteInSpamp() && !RobotContainer.getInstance().m_acquisition.isNoteInAcquisition();
     }
 
     @Override
