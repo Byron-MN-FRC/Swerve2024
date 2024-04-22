@@ -128,7 +128,7 @@ public class Acquisition extends SubsystemBase {
         return noteDetectorAcquisition.get();
     }
 
-    boolean isIntakeRetracted() {
+    public boolean isIntakeRetracted() {
         return !intakeInSwitch.get();
     }
 
