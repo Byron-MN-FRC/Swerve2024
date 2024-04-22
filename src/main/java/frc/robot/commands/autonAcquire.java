@@ -38,10 +38,10 @@ public class autonAcquire extends Command {
     // VVVVVVVVVVVVVVVVVVVVV
      SmartDashboard.putNumber("shooter",m_time.get());
   
-     if (m_time.get() > 1.3 && m_time.get() < 1.7){
+     if (m_time.get() > 2.3 && m_time.get() < 2.7){
        m_acquisition.retractIntake();
 
-     } else if (m_time.get() >= 1.7) { 
+     } else if (m_time.get() >= 2.7) { 
        m_acquisition.deployIntake();
      }
       SmartDashboard.putNumber("shooter",m_time.get());
