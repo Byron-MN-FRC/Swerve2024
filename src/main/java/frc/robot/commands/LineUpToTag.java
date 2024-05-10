@@ -29,7 +29,7 @@ public class LineUpToTag extends Command {
     private static final TrapezoidProfile.Constraints Y_CONSTRAINTS = new TrapezoidProfile.Constraints(3, 2);
     private static final TrapezoidProfile.Constraints OMEGA_CONSTRAINTS = new TrapezoidProfile.Constraints(8, 8);
 
-    private String _limelightName = "limelight-bears"; // use from vision TODO
+    private String _limelightName = "limelight-tags"; // use from vision TODO
     public AprilTagFieldLayout FieldLayout = AprilTagFields.k2024Crescendo.loadAprilTagLayoutField();
 
     private final Swerve m_swerve;
@@ -67,6 +67,7 @@ public class LineUpToTag extends Command {
                 );
                 // offset from cameral to middle of robot
                 newPose = newPose.transformBy(new Transform2d(new Translation2d(Units.inchesToMeters(10.5),0),new Rotation2d()));
+                //fix ^
                 m_swerve.setPose(newPose);
                 lastTarget = fidID;
                 goalPose = TagApproaches.getInstance().DesiredRobotPos(lastTarget);

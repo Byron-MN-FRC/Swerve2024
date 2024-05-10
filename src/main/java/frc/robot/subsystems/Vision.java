@@ -40,7 +40,7 @@ public class Vision extends SubsystemBase {
     private double rotPower = 0;
 
 
-    private String _limelightName = "limelight-bears";
+    private String _limelightName = "limelight-tags";
 
     // Supplier of pose information for each pose.
     private TagApproaches _tagApproches;
