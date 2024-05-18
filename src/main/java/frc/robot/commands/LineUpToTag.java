@@ -67,7 +67,6 @@ public class LineUpToTag extends Command {
                 );
                 // offset from cameral to middle of robot
                 newPose = newPose.transformBy(new Transform2d(new Translation2d(Units.inchesToMeters(10.5),0),new Rotation2d()));
-                //fix ^
                 m_swerve.setPose(newPose);
                 lastTarget = fidID;
                 goalPose = TagApproaches.getInstance().DesiredRobotPos(lastTarget);

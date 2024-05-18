@@ -42,6 +42,7 @@ import frc.robot.commands.ShootLowAmpEnd;
 import frc.robot.commands.ShootLowAmpStart;
 import frc.robot.commands.SpampIntake;
 import frc.robot.commands.TeleopSwerve;
+import frc.robot.commands.TurnToNote;
 import frc.robot.commands.UnwindClimb;
 import frc.robot.commands.autonAcquire;
 import frc.robot.commands.autonAmp;
@@ -83,6 +84,7 @@ public class RobotContainer {
 
   /* Driver Buttons */
   final JoystickButton btnDriveToTag = new JoystickButton(driver.getHID(), XboxController.Button.kA.value);
+  final JoystickButton btnTurnToNote = new JoystickButton(driver.getHID(), XboxController.Button.kB.value);
 
   private final JoystickButton zeroGyro = new JoystickButton(driver.getHID(), XboxController.Button.kStart.value);
   private final JoystickButton resetState = new JoystickButton(accessory.getHID(), XboxController.Button.kB.value);
@@ -189,6 +191,13 @@ public class RobotContainer {
     /* Driver Buttons */
     btnDriveToTag.whileTrue(
         new LineUpToTag(s_Swerve, s_Swerve::getPose).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
+
+    btnTurnToNote.whileTrue(
+        new TurnToNote(s_Swerve,
+            () -> -driver.getRawAxis(translationAxis),
+            () -> -driver.getRawAxis(strafeAxis),
+            () -> -driver.getRawAxis(rotationAxis),
+            () -> false).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
 
     zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
 
