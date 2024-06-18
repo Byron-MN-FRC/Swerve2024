@@ -29,7 +29,7 @@ public class Swerve extends SubsystemBase {
     public Pigeon2 gyro;
     private AnalogOutput hourGlAnalog = new AnalogOutput(0);
     public boolean invert = false;
-    private double isSlow = 1;
+    private double isSlow = .15;
 
     public Swerve() {
         gyro = new Pigeon2(Constants.Swerve.pigeonID);
@@ -74,7 +74,7 @@ public class Swerve extends SubsystemBase {
 
     public void slow() {
         if (isSlow == 1) {
-            isSlow = .35;
+            isSlow = .15;
         } else {
             isSlow = 1;
         }
