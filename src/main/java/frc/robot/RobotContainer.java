@@ -47,6 +47,7 @@ import frc.robot.commands.UnwindClimb;
 import frc.robot.commands.autonAcquire;
 import frc.robot.commands.autonAmp;
 import frc.robot.commands.autonShoot;
+import frc.robot.commands.autonSpampIntake;
 import frc.robot.subsystems.Acquisition;
 import frc.robot.subsystems.Climb;
 import frc.robot.subsystems.Spamp;
@@ -119,6 +120,7 @@ public class RobotContainer {
     NamedCommands.registerCommand("autonShootCommand", new autonShoot(m_spamp));
     NamedCommands.registerCommand("autonAcquireCommand", new autonAcquire(m_acquisition));
     NamedCommands.registerCommand("autonAmpCommand", new autonAmp(m_spamp));
+    NamedCommands.registerCommand("autonSpampIntakeCommand", new autonSpampIntake(m_spamp));
 
     ph.enableCompressorAnalog(100, 120);
 

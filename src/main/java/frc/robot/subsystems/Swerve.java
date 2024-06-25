@@ -30,7 +30,7 @@ public class Swerve extends SubsystemBase {
     private AnalogOutput hourGlAnalog = new AnalogOutput(0);
     public boolean invert = false;
     private double isSlow = .15;
-
+    //Pre-GND isSlow = 1;
     public Swerve() {
         gyro = new Pigeon2(Constants.Swerve.pigeonID);
         gyro.getConfigurator().apply(new Pigeon2Configuration());

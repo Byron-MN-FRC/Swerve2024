@@ -3,29 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.641,
-        "y": 5.81
+        "x": 1.86,
+        "y": 7.5
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.551116621379067,
-        "y": 6.837371718786167
-      },
-      "isLocked": false,
-      "linkedName": "GNDSource"
-    },
-    {
-      "anchor": {
-        "x": 4.19411283267011,
-        "y": 7.75
-      },
-      "prevControl": {
-        "x": 5.861805930784183,
-        "y": 7.75
-      },
-      "nextControl": {
-        "x": 2.8392746907520623,
-        "y": 7.75
+        "x": 2.0107794349534487,
+        "y": 5.7765831723012795
       },
       "isLocked": false,
       "linkedName": null
@@ -36,33 +20,49 @@
         "y": 5.676
       },
       "prevControl": {
-        "x": 4.108599328309768,
-        "y": 5.672395789236023
+        "x": 1.595194028165835,
+        "y": 5.676
       },
       "nextControl": {
-        "x": 1.5983768979320343,
-        "y": 5.681595831886007
+        "x": 4.105194028165835,
+        "y": 5.676
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.86,
-        "y": 7.5
+        "x": 4.19411283267011,
+        "y": 7.75
       },
       "prevControl": {
-        "x": 2.010348214388117,
-        "y": 5.781512045917047
+        "x": 2.84411283267011,
+        "y": 7.75
+      },
+      "nextControl": {
+        "x": 5.86411283267011,
+        "y": 7.75
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 5.64,
+        "y": 5.81
+      },
+      "prevControl": {
+        "x": 5.64,
+        "y": 6.84
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "GNDGoal"
+      "linkedName": null
     }
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 2.25,
+      "waypointRelativePos": 0.6000000000000001,
       "rotationDegrees": 180.0,
       "rotateFast": false
     }
@@ -77,13 +77,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -90.0,
+    "rotation": 180.0,
     "rotateFast": false
   },
   "reversed": false,
   "folder": null,
   "previewStartingState": {
-    "rotation": 180.0,
+    "rotation": -90.0,
     "velocity": 0
   },
   "useDefaultConstraints": true
