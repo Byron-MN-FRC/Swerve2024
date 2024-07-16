@@ -12,27 +12,34 @@
     "data": {
       "commands": [
         {
-          "type": "named",
+          "type": "sequential",
           "data": {
-            "name": "autonSpampIntakeCommand"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "GND"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "autonShootCommand"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "GNDReturn"
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "autonSpampIntakeCommand"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "GND"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "autonShootCommand"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "GNDReturn"
+                }
+              }
+            ]
           }
         }
       ]

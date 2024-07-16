@@ -89,7 +89,7 @@ public class RobotContainer {
 
   private final JoystickButton zeroGyro = new JoystickButton(driver.getHID(), XboxController.Button.kStart.value);
   private final JoystickButton resetState = new JoystickButton(accessory.getHID(), XboxController.Button.kB.value);
-  private final JoystickButton slowDown = new JoystickButton(driver.getHID(), XboxController.Button.kY.value);
+  private final JoystickButton slowDown = new JoystickButton(accessory.getHID(), XboxController.Button.kY.value);
 
   /* Subsystems */
   public final Swerve s_Swerve = new Swerve();

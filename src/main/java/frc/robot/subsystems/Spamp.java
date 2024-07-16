@@ -203,17 +203,21 @@ public class Spamp extends SubsystemBase {
     }
 
     public void speakerAutonShoot() {
-        if (!noteDetectorSpampTop.get()) {
-            bottomLeft.set(.1);
-            midLeft.set(.1);
-            topLeft.set(Constants.SpampConstants.speakerRPM / Constants.MaxRPMConstants.maxRPMVortex);
-            topRight.set(-Constants.SpampConstants.speakerRPM / Constants.MaxRPMConstants.maxRPMVortex);
-            RobotContainer.getInstance().m_acquisition.runBoth();
+        // if (!noteDetectorSpampTop.get()) {
+        //     bottomLeft.set(.1);
+        //     midLeft.set(.1);
+        //     topLeft.set(Constants.SpampConstants.speakerRPM / Constants.MaxRPMConstants.maxRPMVortex);
+        //     topRight.set(-Constants.SpampConstants.speakerRPM / Constants.MaxRPMConstants.maxRPMVortex);
+        //     RobotContainer.getInstance().m_acquisition.runBoth();
 
-        }
-        else {
-            shootSpeaker();
-        }
+        // }
+        // else {
+        //     shootSpeaker();
+        // }
+        bottomLeft.set(1);
+        midLeft.set(1);
+        topLeft.set(Constants.SpampConstants.speakerRPM / Constants.MaxRPMConstants.maxRPMVortex);
+        topRight.set(-Constants.SpampConstants.speakerRPM / Constants.MaxRPMConstants.maxRPMVortex);
     }
 
     public void ampAutonShoot() {
